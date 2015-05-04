@@ -1,0 +1,84 @@
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr>
+  <td bgcolor="#D8D8D8" height="26">
+    <b>&nbsp;&nbsp;
+    <a href="<{$xoops_url}>/">Home</a>&nbsp;&nbsp;
+    <a href="<{$xoops_url}>/modules/newbb/">Forum</a>&nbsp;&nbsp;
+    <a href="<{$xoops_url}>/modules/news/">News</a>&nbsp;&nbsp;
+    <a href="<{$xoops_url}>/modules/xoopspartners/">Partners</a>&nbsp;&nbsp;
+    <a href="<{$xoops_url}>/modules/contact/">Contact</a>&nbsp;&nbsp;
+    <a href="<{$xoops_url}>/themes/be_like/about.php">About...</a>&nbsp;&nbsp;
+    </b>
+  </td>
+<{if ! ( $xoops_isuser == 1 ) }><form style="margin-top: 0px;" action="<{$xoops_url}>/user.php" method="post">
+  <td bgcolor="#D8D8D8" align="right" height="26">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: <input type="text" name="uname" size="12" value="" />&nbsp;Password: <input type="password" name="pass" size="12" /><input type="hidden" name="xoops_redirect" value="/" /><input type="hidden" name="op" value="login" /><input type="submit" value="ログイン" />&nbsp;&nbsp;
+  </td></form>
+<{else}>
+  <td bgcolor="#D8D8D8" align="right" height="26" valign="middle">
+  Hello <{$xoops_uname}>!&nbsp;&nbsp; &gt;&gt; <a href="<{$xoops_url}>/user.php?op=logout">Logout</a>&nbsp;&nbsp;
+  </td>
+<{/if}>
+  <!-- td bgcolor="#D8D8D8" align="right" width="45">&nbsp;</td -->
+</tr>
+</table>
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr>
+  <td colspan="2" background="<{$xoops_imageurl}>images/bar1.png" height="4"></td>
+</tr>
+<tr>
+  <td id="leftcolumn" bgcolor="#D8D8D8">
+    <!-- Start left blocks loop -->
+    <{foreach item=block from=$xoops_lblocks}>
+    <fieldset>
+    <legend class="blockTitle"><{$block.title}></legend>
+    <div class="blockContent"><{$block.content}></div>
+    </fieldset>
+    <{/foreach}>
+    <!-- End left blocks loop -->
+  </td>
+  <td id="centercolumn">
+<{if $xoops_banner != "&nbsp;"}><center><{$xoops_banner}></center><br /><{/if}>
+    <!-- Display center blocks if any -->
+<{if $xoops_showcblock == 1}>
+    <table cellspacing="0">
+      <tr><td id="centerCcolumn" colspan="2" bgcolor="#FFFFFF">
+        <!-- Start center-center blocks loop -->
+        <{foreach item=block from=$xoops_ccblocks}>
+        <div>
+        <div class="blockTitle"><img src="<{$xoops_imageurl}>images/Desktop.gif">&nbsp;<{$block.title}></div>
+        <div class="blockContent"><{$block.content}></div>
+        </div>
+        <{/foreach}>
+        <!-- End center-center blocks loop -->
+      </td></tr>
+      <tr><td id="centerLcolumn">
+        <!-- Start center-left blocks loop -->
+        <{foreach item=block from=$xoops_clblocks}>
+        <div style="padding: 0px 0px 0px 0px;">
+        <div class="blockTitle"><img src="<{$xoops_imageurl}>images/Desktop.gif">&nbsp;<{$block.title}></div>
+        <div class="blockContent">
+<{$block.content}>
+        </div>
+        </div>
+        <{/foreach}>
+        <!-- End center-left blocks loop -->
+      </td><td id="centerRcolumn">
+        <!-- Start center-right blocks loop -->
+        <{foreach item=block from=$xoops_crblocks}>
+        <div style="padding: 0px 0px 0px 0px;">
+        <div class="blockTitle"><img src="<{$xoops_imageurl}>images/Desktop.gif">&nbsp;<{$block.title}></div>
+        <div class="blockContent">
+<{$block.content}>
+        </div>
+        </div>
+        <{/foreach}>
+        <!-- End center-right blocks loop -->
+      </td></tr>
+    </table>
+<{/if}>
+<!-- End display center blocks -->
+
+    <{if $xoops_contents }><div id="content"><{$xoops_contents}></div><{/if}>
+  </td>
+</tr></table>
